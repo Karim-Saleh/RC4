@@ -88,23 +88,6 @@ namespace SecurityLibrary.RC4
             list[j] = temp;
         }
 
-        private string hexToAscii(string targetText)
-        {
-            targetText = targetText.Substring(2);
-            byte[] hexBytes = Enumerable.Range(0, targetText.Length)
-                .Where(x => x % 2 == 0)
-                .Select(x => Convert.ToByte(targetText.Substring(x, 2), 16))
-                .ToArray();
-            return Encoding.ASCII.GetString(hexBytes);
-        }
-
-        private string asciiToHex(string targetText)
-        {
-            byte[] asciiBytes = Encoding.Unicode.GetBytes(targetText);
-            string hexString = BitConverter.ToString(asciiBytes).Replace("-", string.Empty);
-            return "0x" + hexString.Replace("00", string.Empty);
-        }
-
         private List<byte> encodeStringToBytes(string targetText)
         {
             List<byte> result;
